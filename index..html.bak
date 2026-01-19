@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Imfundoyakusasa — School Enrollment</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.4;margin:0;padding:0}
+    header{background:#036;color:#fff;padding:1rem}
+    main{padding:1rem;max-width:900px;margin:0 auto}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:1rem}
+    .card{border:1px solid #ddd;padding:1rem;border-radius:6px}
+    label{display:block;margin:0.5rem 0 0.25rem}
+    input,select,textarea{width:100%;padding:0.5rem;border:1px solid #ccc;border-radius:4px}
+    button{background:#036;color:#fff;padding:0.6rem 0.9rem;border:none;border-radius:4px;cursor:pointer}
+    .success{background:#e6ffed;border:1px solid #b7f0c9;padding:0.75rem;border-radius:4px;margin-top:0.5rem}
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Imfundoyakusasa School</h1>
+    <p>Check courses, availability and enroll online</p>
+  </header>
+
+  <main>
+    <div class="grid">
+      <section class="card" id="courses">
+        <h2>Programs</h2>
+        <ul id="programList">
+          <li><strong>Early Childhood</strong> — Ages 3–5 · <em>Available</em></li>
+          <li><strong>Primary School</strong> — Grades 1–7 · <em>Available</em></li>
+          <li><strong>Secondary</strong> — Grades 8–12 · <em>Limited spots</em></li>
+        </ul>
+
+        <h3>How to enroll</h3>
+        <ol>
+          <li>Select a program in the form</li>
+          <li>Provide contact details</li>
+          <li>Submit — a confirmation will be shown</li>
+        </ol>
+      </section>
+
+      <aside class="card">
+        <h2>Enroll Now</h2>
+        <form id="enrollForm" autocomplete="off">
+          <label for="fullName">Full name</label>
+          <input id="fullName" name="fullName" required />
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+
+          <label for="program">Program</label>
+          <select id="program" name="program" required>
+            <option value="">-- choose --</option>
+            <option>Early Childhood</option>
+            <option>Primary School</option>
+            <option>Secondary</option>
+          </select>
+
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" name="notes" rows="3"></textarea>
+
+          <div style="margin-top:.6rem">
+            <button type="submit">Submit enrollment</button>
+          </div>
+
+          <div id="result" class="success hidden" role="status"></div>
+        </form>
+      </aside>
+    </div>
+
+    <section class="card" style="margin-top:1rem">
+      <h2>Recent enrollments (local preview)</h2>
+      <ul id="enrollments"></ul>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('enrollForm');
+    const result = document.getElementById('result');
+    const list = document.getElementById('enrollments');
+
+    function showMessage(msg){
+      result.textContent = msg;
+      result.classList.remove('hidden');
+      setTimeout(()=> result.classList.add('hidden'), 5000);
+    }
+
+    function addLocalEntry(data){
+      const li = document.createElement('li');
+      li.textContent = `${data.fullName} — ${data.program} — ${data.email}`;
+      list.prepend(li);
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = {
+        fullName: form.fullName.value.trim(),
+        email: form.email.value.trim(),
+        program: form.program.value,
+        notes: form.notes.value.trim()
+      };
+      if (!data.fullName || !data.email || !data.program) {
+        showMessage('Please complete required fields.');
+        return;
+      }
+
+      // Local preview immediately
+      addLocalEntry(data);
+
+      // Attempt to POST to backend endpoint (create API later)
+      try {
+        await fetch('/api/enroll', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(data)
+        });
+        showMessage('Enrollment submitted. We will contact you shortly.');
+        form.reset();
+      } catch (err) {
+        // If backend missing, inform user but keep local preview
+        showMessage('Saved locally (no backend). Add server to persist enrollments.');
+      }
+    });
+  </script>
+</body>
+</html>

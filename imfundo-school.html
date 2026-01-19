@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Imfundo School — Enrollment</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.4;margin:0;padding:0}
+    header{background:#036;color:#fff;padding:1rem}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:0}
+    .header-left{display:flex;align-items:center;gap:0.75rem;flex:0 0 auto}
+    .logo img{width:48px;height:48px;display:block;object-fit:contain;background:#fff;border-radius:6px;padding:2px}
+    .site-title h1{margin:0;font-size:1.25rem}
+    .site-title p{margin:0;color:rgba(255,255,255,0.95)}
+    .header-actions{display:flex;align-items:center;gap:0.75rem;flex:1 1 auto;justify-content:flex-end}
+    .nav-btn{background:transparent;color:#fff;padding:0.4rem 0.5rem;border-radius:6px;text-decoration:none;font-weight:600;border:0;display:flex;flex-direction:column;align-items:center;justify-content:center;width:auto;min-width:56px}
+    .nav-btn .label{display:block;font-size:0.75rem;margin-top:4px;color:rgba(255,255,255,0.95)}
+    .nav-btn svg{width:20px;height:20px;display:block}
+    .nav-btn:hover{background:rgba(255,255,255,0.08)}
+    .nav-btn.active, .nav-btn[aria-current="page"]{background:#fff;color:#036}
+    .nav-btn.active .label, .nav-btn[aria-current="page"] .label{color:#036}
+    .nav-btn.active svg path, .nav-btn[aria-current="page"] svg path{fill:#036}
+    .nav-btn:focus{outline:3px solid rgba(255,255,255,0.25);outline-offset:2px}
+    @media (max-width:560px){
+      .header-inner{flex-direction:column;align-items:flex-start;gap:0.5rem}
+      .header-actions{flex-wrap:wrap}
+      .nav-btn{padding:0.3rem 0.4rem;font-size:0.85rem;min-width:48px}
+    }
+    main{padding:1rem;max-width:900px;margin:0 auto}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:1rem}
+    .card{border:1px solid #ddd;padding:1rem;border-radius:6px}
+    label{display:block;margin:0.5rem 0 0.25rem}
+    input,select,textarea{width:100%;padding:0.5rem;border:1px solid #ccc;border-radius:4px}
+    button{background:#036;color:#fff;padding:0.6rem 0.9rem;border:none;border-radius:4px;cursor:pointer}
+    .success{background:#e6ffed;border:1px solid #b7f0c9;padding:0.75rem;border-radius:4px;margin-top:0.5rem}
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="logo-image">
+          <img src="pnd.png" alt="Imfundo logo" width="48" height="48" />
+        </div>
+        <div class="site-title">
+          <h1>Imfundo School</h1>
+          <p>Check courses, availability and enroll online</p>
+        </div>
+      </div>
+      <div class="header-actions" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="nav-btn" aria-label="Home">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 7h-3v8h-4v-5H10v5H6v-8H3l9-7z" fill="#ffffff"/></svg>
+          <span class="label">Home</span>
+        </a>
+        <a href="imfundo-school.html#admissions" class="nav-btn" aria-label="Admissions">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zm0 7.5L4.5 7 12 4.5 19.5 7 12 9.5zM4 10v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6l-8 4.5L4 10z" fill="#ffffff"/></svg>
+          <span class="label">Admissions</span>
+        </a>
+        <a href="programs.html" class="nav-btn" aria-label="Programs">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zM13 21h8V11h-8v10zm0-18v6h8V3h-8z" fill="#ffffff"/></svg>
+          <span class="label">Programs</span>
+        </a>
+        <a href="portal.html" class="nav-btn" aria-label="Portal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zm0 7l8 4.5V20H4v-6.5L12 9z" fill="#ffffff"/></svg>
+          <span class="label">Portal</span>
+        </a>
+        <a href="news.html" class="nav-btn" aria-label="News">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5v14h18V5H3zm2 2h14v10H5V7zM7 9h5v2H7V9zm0 4h9v2H7v-2z" fill="#ffffff"/></svg>
+          <span class="label">News</span>
+        </a>
+        <a href="contact.html" class="nav-btn" aria-label="Contact">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8V7l-3 2-2-1-4 3-6-3-3 2v7h18V8zM4 6h16V4H4v2z" fill="#ffffff"/></svg>
+          <span class="label">Contact</span>
+        </a>
+        <a href="about.html" class="nav-btn" aria-label="About">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-8 2-8 4v2h16v-2c0-2-4-4-8-4z" fill="#ffffff"/></svg>
+          <span class="label">About</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid">
+      <section class="card" id="courses">
+        <h2>Programs</h2>
+        <ul id="programList">
+          <li><strong>Early Childhood</strong> — Ages 3–5 · <em>Available</em></li>
+          <li><strong>Primary School</strong> — Grades 1–7 · <em>Available</em></li>
+          <li><strong>Secondary</strong> — Grades 8–12 · <em>Limited spots</em></li>
+        </ul>
+
+        <h3>How to enroll</h3>
+        <ol>
+          <li>Select a program in the form</li>
+          <li>Provide contact details</li>
+          <li>Submit — a confirmation will be shown</li>
+        </ol>
+      </section>
+
+      <aside class="card" id="admissions">
+        <h2>Enroll Now</h2>
+        <form id="enrollForm" autocomplete="off">
+          <label for="fullName">Full name</label>
+          <input id="fullName" name="fullName" required />
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+
+          <label for="program">Program</label>
+          <select id="program" name="program" required>
+            <option value="">-- choose --</option>
+            <option>Early Childhood</option>
+            <option>Primary School</option>
+            <option>Secondary</option>
+          </select>
+
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" name="notes" rows="3"></textarea>
+
+          <div style="margin-top:.6rem">
+            <button type="submit">Submit enrollment</button>
+          </div>
+
+          <div id="result" class="success hidden" role="status"></div>
+        </form>
+      </aside>
+    </div>
+
+    <section class="card" style="margin-top:1rem">
+      <h2>Recent enrollments (local preview)</h2>
+      <ul id="enrollments"></ul>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('enrollForm');
+    const result = document.getElementById('result');
+    const list = document.getElementById('enrollments');
+
+    function showMessage(msg){
+      result.textContent = msg;
+      result.classList.remove('hidden');
+      setTimeout(()=> result.classList.add('hidden'), 5000);
+    }
+
+    function addLocalEntry(data){
+      const li = document.createElement('li');
+      li.textContent = `${data.fullName} — ${data.program} — ${data.email}`;
+      list.prepend(li);
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = {
+        fullName: form.fullName.value.trim(),
+        email: form.email.value.trim(),
+        program: form.program.value,
+        notes: form.notes.value.trim()
+      };
+      if (!data.fullName || !data.email || !data.program) {
+        showMessage('Please complete required fields.');
+        return;
+      }
+
+      // Local preview immediately
+      addLocalEntry(data);
+
+      // Attempt to POST to backend endpoint (create API later)
+      try {
+        await fetch('/api/enroll', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(data)
+        });
+        showMessage('Enrollment submitted. We will contact you shortly.');
+        form.reset();
+      } catch (err) {
+        // If backend missing, inform user but keep local preview
+        showMessage('Saved locally (no backend). Add server to persist enrollments.');
+      }
+    });
+    // Highlight current navigation item
+    (function highlightNav(){
+      const navLinks = Array.from(document.querySelectorAll('.nav-btn'));
+      const current = (location.pathname || '').split('/').pop() || 'index.html';
+      navLinks.forEach(a => {
+        const hrefFile = a.getAttribute('href').split('/').pop();
+        if (hrefFile === current || (current === '' && hrefFile === 'index.html')){
+          a.classList.add('active');
+          a.setAttribute('aria-current','page');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Imfundo School — Home</title>
+  <style>
+    :root{--brand:#036;--muted:#f3f6f8;--max-width:1100px}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;margin:0;color:#122;background:#ffffff}
+    header{background:var(--brand);color:#fff}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;max-width:var(--max-width);margin:0 auto;padding:0}
+    .header-left{display:flex;align-items:center;gap:0.75rem;flex:0 0 auto}
+    .logo img{width:48px;height:48px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;display:block}
+    .site-title h1{margin:0;font-size:1.15rem}
+    .site-title p{margin:0;font-size:0.9rem;opacity:0.9}
+    .header-actions{display:flex;gap:0.5rem;align-items:center;flex:1 1 auto;justify-content:flex-end;flex-wrap:wrap}
+    .nav-btn{background:transparent;color:#fff;padding:0.35rem 0.5rem;border-radius:6px;text-decoration:none;display:flex;flex-direction:column;align-items:center;font-weight:600;min-width:48px}
+    .nav-btn .label{font-size:0.75rem;margin-top:4px;line-height:1}
+    .nav-btn svg{width:18px;height:18px;display:block}
+    .nav-btn:hover{background:rgba(255,255,255,0.08)}
+    main{max-width:var(--max-width);margin:2rem auto;padding:0 1rem}
+    .hero{display:flex;gap:2rem;align-items:center;justify-content:space-between;background:linear-gradient(180deg,#fff,#f9fbfc);padding:2rem;border-radius:8px}
+    .hero .left{flex:1;min-width:200px}
+    .hero .right{flex:0 0 240px;text-align:right}
+    .hero .right img{max-width:100%;height:auto;border-radius:8px;object-fit:contain;background:#fff;padding:8px}
+    .hero h2{margin:0 0 .5rem;font-size:1.8rem}
+    .hero p{margin:0 0 1rem;color:#334}
+    .cta{display:inline-block;background:var(--brand);color:#fff;padding:.7rem 1rem;border-radius:6px;text-decoration:none}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.25rem}
+    .feature{background:var(--muted);padding:1rem;border-radius:6px}
+    footer{max-width:var(--max-width);margin:2rem auto;padding:1rem;text-align:center;color:#666}
+    @media(max-width:760px){
+      .hero{flex-direction:column;align-items:flex-start}
+      .hero .right{text-align:left;flex:1}
+      .features{grid-template-columns:1fr}
+    }
+    /* Interactive cursor and parallax helpers */
+    .cursor{position:fixed;top:0;left:0;width:14px;height:14px;border-radius:50%;background:var(--brand);pointer-events:none;transform:translate3d(-50%,-50%,0);transition:width .18s ease,height .18s ease,background .18s ease,opacity .2s ease;z-index:9999;mix-blend-mode:normal}
+    .cursor.large{width:36px;height:36px;opacity:0.9}
+    .hero, .hero .left, .hero .right img{transition:transform 0.18s ease}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="logo"><img src="pnd.png" alt="Imfundo logo"/></div>
+        <div class="site-title"><h1>Imfundo School</h1><p>Learn. Grow. Succeed.</p></div>
+      </div>
+      <nav class="header-actions" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="nav-btn" aria-label="Home">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 7h-3v8h-4v-5H10v5H6v-8H3l9-7z" fill="#ffffff"/></svg>
+          <span class="label">Home</span>
+        </a>
+        <a href="imfundo-school.html#admissions" class="nav-btn" aria-label="Admissions">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zm0 7.5L4.5 7 12 4.5 19.5 7 12 9.5zM4 10v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6l-8 4.5L4 10z" fill="#ffffff"/></svg>
+          <span class="label">Admissions</span>
+        </a>
+        <a href="programs.html" class="nav-btn" aria-label="Programs">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zM13 21h8V11h-8v10zm0-18v6h8V3h-8z" fill="#ffffff"/></svg>
+          <span class="label">Programs</span>
+        </a>
+        <a href="portal.html" class="nav-btn" aria-label="Portal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zm0 7l8 4.5V20H4v-6.5L12 9z" fill="#ffffff"/></svg>
+          <span class="label">Portal</span>
+        </a>
+        <a href="news.html" class="nav-btn" aria-label="News">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5v14h18V5H3zm2 2h14v10H5V7zM7 9h5v2H7V9zm0 4h9v2H7v-2z" fill="#ffffff"/></svg>
+          <span class="label">News</span>
+        </a>
+        <a href="contact.html" class="nav-btn" aria-label="Contact">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8V7l-3 2-2-1-4 3-6-3-3 2v7h18V8zM4 6h16V4H4v2z" fill="#ffffff"/></svg>
+          <span class="label">Contact</span>
+        </a>
+        <a href="about.html" class="nav-btn" aria-label="About">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-8 2-8 4v2h16v-2c0-2-4-4-8-4z" fill="#ffffff"/></svg>
+          <span class="label">About</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="hero">
+      <div class="left">
+        <h2>Welcome to Imfundo School</h2>
+        <p>Quality education from Early Childhood to Secondary. Explore our programs and enroll today.</p>
+        <a class="cta" href="imfundo-school.html#admissions">Apply Now</a>
+      </div>
+      <div class="right">
+        <img src="pnd.png" alt="School logo"/>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature"><h3>Experienced Teachers</h3><p>Our staff are trained educators focused on student success.</p></div>
+      <div class="feature"><h3>Safe Campus</h3><p>Secure facilities and supportive environment for learning.</p></div>
+      <div class="feature"><h3>After-School Programs</h3><p>Clubs and activities to develop interests and skills.</p></div>
+    </div>
+  </main>
+
+  <footer>
+    © Imfundo School — All rights reserved
+  </footer>
+  <script>
+    // Smooth cursor follow (lerp) and hero parallax
+    (function(){
+      const cursor = document.createElement('div'); cursor.className='cursor'; document.body.appendChild(cursor);
+      let mouse = {x: window.innerWidth/2, y: window.innerHeight/2};
+      let pos = {x: mouse.x, y: mouse.y};
+      window.addEventListener('mousemove', (e)=>{ mouse.x = e.clientX; mouse.y = e.clientY; });
+      function raf(){ pos.x += (mouse.x - pos.x) * 0.15; pos.y += (mouse.y - pos.y) * 0.15; cursor.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0)`; requestAnimationFrame(raf); }
+      raf();
+
+      // Parallax on hero
+      const hero = document.querySelector('.hero');
+      if (!hero) return;
+      const left = hero.querySelector('.left');
+      const rightImg = hero.querySelector('.right img');
+
+      function onMove(e){
+        const r = hero.getBoundingClientRect();
+        const x = ((e.clientX - r.left) / r.width - 0.5);
+        const y = ((e.clientY - r.top) / r.height - 0.5);
+        const lx = x * 8; const ly = y * 8;
+        const rx = -x * 14; const ry = -y * 10;
+        hero.style.transform = `perspective(800px) rotateY(${x*2.5}deg) rotateX(${y*-2.5}deg)`;
+        if (left) left.style.transform = `translate3d(${lx}px, ${ly}px, 0)`;
+        if (rightImg) rightImg.style.transform = `translate3d(${rx}px, ${ry}px, 0) rotate(${x*3}deg)`;
+      }
+      function reset(){ hero.style.transform='none'; if(left) left.style.transform='none'; if(rightImg) rightImg.style.transform='none'; }
+      hero.addEventListener('mousemove', onMove);
+      hero.addEventListener('mouseleave', reset);
+
+      // Cursor size changes over interactive elements
+      const interactive = document.querySelectorAll('.cta, .nav-btn, a');
+      interactive.forEach(el=>{
+        el.addEventListener('mouseenter', ()=> cursor.classList.add('large'));
+        el.addEventListener('mouseleave', ()=> cursor.classList.remove('large'));
+      });
+    })();
+  </script>
+</body>
+</html>
